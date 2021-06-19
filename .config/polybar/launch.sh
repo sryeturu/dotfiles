@@ -1,7 +1,8 @@
 # Terminate already running bar instances
 killall -q polybar
-# If all your bars have ipc enabled, you can also use 
-# polybar-msg cmd quit
+
+# killall doesn't hang, so we wait until instance is killed
+while pgrep -x polybar >/dev/null; do sleep 1;done
 
 # Launch bar
 polybar bar
