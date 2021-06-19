@@ -1,0 +1,79 @@
+! writing:
+*.foreground:   #e3cae9
+
+!background
+*.background:   #02022f
+
+!cursor color
+*.cursorColor:  #e3cae9
+
+! nothing
+*.color0:       #02022f
+*.color8:       #02022f
+
+!setuid file, /bin/sudo 
+*.color1:       #07fc03
+
+! zip files
+*.color9:       #b7009d
+
+! world writable directories, not much 
+*.color2:       #e3f700
+
+! executable binaries, mug@mug-Lenovo
+*.color10:      #5f8abb
+
+! fifo file(communicating file) /bin/urxvt, /bin/ssh agent
+*.color3:       #00fffb
+
+!block level files /dev/loop, nothing 
+*.color11:      #fc0303
+
+!nothing
+*.color4:       #da57b5
+
+! directories
+*.color12:      #da57b5
+
+! nothing
+*.color5:       #679fdc
+
+!jpg, png, socket file
+*.color13:       #e3cae9
+
+! unsed
+*.color6:       #808080
+
+!symbolic link files, nothing much /bin
+*.color14:      #964B00
+
+! white
+*.color7:       #e3cae9
+*.color15:      #e3cae9
+
+
+!! URxvt Appearance
+URxvt.font: xft:Hack:style=Regular:size=8
+URxvt.boldFont: xft:Hack:style=Bold:size=8
+URxvt.italicFont: xft:Hack:style=Italic:size=8
+URxvt.boldItalicfont: xft:Hack:style=Bold Italic:size=8
+URxvt.letterSpace: 0
+URxvt.lineSpace: 0
+URxvt.geometry: 92x24
+URxvt.internalBorder: 24
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 2048
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.urgentOnBell: true
+URxvt.depth: 24
+URxvt.iso14755: false
+
+!! Common Keybinds for Navigations
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.Control-Up: \033[1;5A
+URxvt.keysym.Control-Down: \033[1;5B
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Left: \033[1;5D

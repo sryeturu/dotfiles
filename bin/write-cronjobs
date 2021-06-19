@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# writes cronjobs to a file "cronjobs" in home directory
+
+crontab -l > ~/cronjobs

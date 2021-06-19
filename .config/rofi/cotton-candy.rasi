@@ -1,0 +1,90 @@
+/**
+modified theme of "bresilla"
+ */
+
+
+* {
+   text-color: #da57b5;
+
+   background: #02022F;
+   background-color: @background;
+
+   selected-text: #e3cae9;
+
+	background-alt: 	rgba(255, 255, 255, 0.1);
+
+   fromtop: 20%;
+}
+
+#window {
+   background-color: 	@background;
+   anchor: 				north;
+   location: 			north;
+   y-offset: 			@fromtop;
+    /* border-radius:      8px; */
+}
+
+#mainbox {
+   background-color: 	@background;
+}
+
+#listview {
+   fixed-height: 		false;
+   dynamic: 			true;
+   scrollbar: 			false;
+   padding: 			10px;
+   /* border:              5px; */
+   background: 			@background;
+}
+
+#element {
+    padding: 			10px 25px 10px 25px;
+    /* border-radius:      4px; */
+}
+
+#element.normal.normal {
+   background-color: 	@background;
+   text-color: 			@text-color;
+}
+
+#element.normal.active {
+   background-color: 	@background;
+   text-color: 			@text-color;
+}
+
+#element.selected.normal {
+    background-color: 	@background-alt;
+    text-color:       	@selected-text;
+}
+
+#element.selected.active {
+    background-color: 	@foreground;
+    text-color:       	@text-color;
+}
+
+#element.alternate.normal {
+    background-color: 	@background;
+    text-color:       	@text-color;
+}
+
+#element.alternate.active {
+    background-color: 	@background;
+    text-color:       	@text-color;
+}
+
+#inputbar {
+   padding: 			0 -1% 0 0;
+}
+
+#prompt {
+   background-color:	@text-color;
+   text-color:			@background;
+   padding: 			10 1% 10 1%;
+}
+
+#entry {
+   background-color: 	@background-alt;
+   text-color:			@selected-text;
+   /* border-radius:       4px; */
+   padding: 			10 0 10 10;
+}
