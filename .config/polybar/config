@@ -131,9 +131,9 @@ label-connected = %{A1:gnome-control-center wifi &:}%essid%%{A}
 
 
 format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${colors.underline}
+format-disconnected-underline = ${colors.underline}
 label-disconnected = %{A1:gnome-control-center wifi &:}no wifi%{A}
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.text-color}
 
 [module/pulseaudio]
 type = internal/pulseaudio
