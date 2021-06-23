@@ -198,8 +198,5 @@ bindsym Mod1+l exec --no-startup-id lock-screen
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness 
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
 
-exec --no-startup-id redshift
 
-exec_always --no-startup-id feh --bg-scale ~/wallpapers/cotton_candy_seerlight.jpg
-exec_always --no-startup-id bash ~/.config/polybar/launch.sh
-exec_always --no-startup-id picom -b
+exec_always --no-startup-id bash ~/.startup
