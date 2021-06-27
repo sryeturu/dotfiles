@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+EDITOR=code
+
+CUR_DIR=~/.config
+
+echo -en "\0prompt\x1fsearch config:\n"
+
+if [ ! $# -eq 0 ]
+then
+    if [ "$1" = ".." ]
+    then
+        $CUR_DIR = $(dirname $CUR_DIR)
+    else 
+        CUR_DIR+="/$1"
+    fi
+
+
+    if [ "$ROFI_RETV" -eq 10 ] || [ ! -d $CUR_DIR ]
+    then
+        coproc (code $CUR_DIR > /dev/null 2>&1)
+        exit 0
+    fi
+
+    if [ "$CUR_DIR" != ~/.config ]
+    then
+        echo ".."
+    fi
+fi
+
+ls $CUR_DIR --group-directories-first --color=never --indicator-style=slash

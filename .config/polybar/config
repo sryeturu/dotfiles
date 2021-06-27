@@ -46,7 +46,7 @@ font-1 = NotoColorEmoji:fontformat=truetype:scale=12:antialias=false;
 
 modules-left = i3
 modules-center = date 
-modules-right =  temperature pulseaudio  wlan
+modules-right =  temperature pulseaudio  wlan battery
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev

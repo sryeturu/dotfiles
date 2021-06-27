@@ -1,0 +1,3 @@
+MAILTO=""
+* * * * * export DISPLAY=:0 && /home/mug/bin/notify-low-battery
+0 0 * * * /home/mug/bin/write-cronjobs 
