@@ -12,6 +12,6 @@ killall -q redshift
 while pgrep -x redshift >/dev/null; do sleep 1; done
 redshift &
 
-killall -q compton
-while pgrep -x compton >/dev/null; do sleep 1; done
-compton &
+killall -q picom
+while pgrep -x picom >/dev/null; do sleep 1; done
+picom &
