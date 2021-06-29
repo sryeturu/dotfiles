@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 
-
 feh --bg-scale ~/wallpapers/cotton_candy_seerlight.jpg
 
 killall -q polybar
@@ -15,3 +14,7 @@ redshift &
 killall -q picom
 while pgrep -x picom >/dev/null; do sleep 1; done
 picom &
+
+killall -q dunst
+while pgrep -x picom >/dev/null; do sleep 1; done
+dunst &
