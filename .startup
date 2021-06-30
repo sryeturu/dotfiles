@@ -16,5 +16,5 @@ while pgrep -x picom >/dev/null; do sleep 1; done
 picom &
 
 killall -q dunst
-while pgrep -x picom >/dev/null; do sleep 1; done
+while pgrep -x dunst >/dev/null; do sleep 1; done
 dunst &

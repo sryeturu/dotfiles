@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 charge_level=$(cat /sys/class/power_supply/BAT0/capacity)
 is_charging=$(cat /sys/class/power_supply/ADP0/online)
 
@@ -7,8 +8,9 @@ notification_id=38294 # random notifications id for low battery
 
 battery_notify_level=20
 
-
 if (( "$charge_level" <= "$battery_notify_level" &&  "$is_charging" == 0 )); then
-    /home/mug/.local/bin/dunstify " LOW BATTERY ${charge_level}%"  -u criticial -r "$notification_id" 
+# needed to display when running as cronjob
+    export DISPLAY=:0
+    sudo -u $USER DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus dunstify " LOW BATTERY ${charge_level}%"  -u criticial -r "$notification_id" 
 fi
 
