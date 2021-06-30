@@ -3,7 +3,7 @@
 
 echo -en "\0prompt\x1fsearch config:\n"
 
-EDITOR=code
+EDITOR=subl
 
 CUR_DIR=~/.config/
 PREV_LOC_FILE=~/.config/rofi/rofi_prev_loc
@@ -16,7 +16,7 @@ else
 
     if [ "$ROFI_RETV" -eq 10 ] # open editor in current directory
     then
-        coproc (code "$CUR_DIR" > /dev/null 2>&1)
+        coproc ("$EDITOR" "$CUR_DIR" > /dev/null 2>&1)
         exit 0
     elif [ "$1" = ".." ] # go back
     then
