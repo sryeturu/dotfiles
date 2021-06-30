@@ -4,11 +4,12 @@ declare -A app_menu
 
 # associative array : [pangu markup of program]=program path name
 app_menu=( 
-    ["Google Chrome <small><i>(web browser)</i></small>"]="google-chrome" 
+    ["Google Chrome"]="google-chrome-stable" 
+    ["Firefox"]="firefox" 
     ["Conky"]="conky" 
     ["Discord"]="discord"
     ["KeePassXC <small><i>(password manager)</i></small>"]="keepassxc"
-    ["Rxvt <small><i>(urxvt terminal emulator)W</i></small>"]="urxvt"
+    ["Rxvt <small><i>(urxvt terminal emulator)</i></small>"]="urxvt"
     ["Lxappearance <small><i>(theme switcher)</i></small>"]="lxappearance"
     ["Nautilus <small><i>(file manager)</i></small>"]="nautilus"
 )
