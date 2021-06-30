@@ -164,20 +164,21 @@ battery = BAT0
 adapter = AD0
 full-at = 98
 
+; seconds I think?
 poll-interval = 5
 
 label-charging-foreground = ${colors.text-color}
-
-;format-charging = charge: <animation-charging> <label-charging>
-
-format-charging = 🔋 <label-charging>
 format-charging-underline = ${colors.underline}
+format-charging = 🔋 <label-charging>
+
 
 label-discharging-foreground = ${colors.text-color}
-;format-discharging = <animation-discharging> <label-discharging> 
-
+format-discharging-underline = ${colors.underline}
 format-discharging = 🔌 <label-discharging> 
-format-discharging-underline = ${self.format-charging-underline}
+
+label-full-foreground = ${colors.text-color}
+format-full-underline = ${colors.underline}
+format-full = 🔋 <label-full>
 
 animation-charging-0 = 🔋
 animation-charging-foreground = ${colors.foreground-alt}
