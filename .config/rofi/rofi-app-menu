@@ -3,7 +3,7 @@
 declare -A app_menu
 
 # associative array : [pangu markup of program]=program path name
-app_menu=( 
+app_menu=(
     ["Google Chrome"]="google-chrome-stable" 
     ["Firefox"]="firefox" 
     ["Conky"]="conky" 
@@ -12,6 +12,8 @@ app_menu=(
     ["Rxvt <small><i>(urxvt terminal emulator)</i></small>"]="urxvt"
     ["Lxappearance <small><i>(theme switcher)</i></small>"]="lxappearance"
     ["Nautilus <small><i>(file manager)</i></small>"]="nautilus"
+    ["Sublime Text <small><i>(code/text editor)</i></small>"]="subl"
+    ["Adventure Quest"]="adventure-quest"
 )
 
 if [ $# -eq 0 ]; then
