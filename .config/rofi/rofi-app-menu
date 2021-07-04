@@ -4,7 +4,6 @@ declare -A app_menu
 
 # associative array : [pangu markup of program]=program path name
 app_menu=(
-    ["Google Chrome"]="google-chrome-stable" 
     ["Firefox"]="firefox" 
     ["Conky"]="conky" 
     ["Discord"]="discord"
@@ -13,6 +12,7 @@ app_menu=(
     ["Lxappearance <small><i>(theme switcher)</i></small>"]="lxappearance"
     ["Nautilus <small><i>(file manager)</i></small>"]="nautilus"
     ["Sublime Text <small><i>(code/text editor)</i></small>"]="subl"
+    ["Google Chrome"]="google-chrome-stable"
     ["Adventure Quest"]="adventure-quest"
 )
 
@@ -27,7 +27,7 @@ if [ $# -eq 0 ]; then
     done
 else
     # launch program as coproc
-    coproc (exec ${app_menu[$1]} > /dev/null 2>&1 )
+    coproc (${app_menu[$1]} > /dev/null 2>&1 )
     exit 0
 fi
 
