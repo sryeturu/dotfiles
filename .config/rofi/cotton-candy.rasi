@@ -4,12 +4,14 @@ modified theme of "bresilla"
 
 
 * {
-   text-color: #da57b5;
+   prompt-background: #da57b5;
+   prompt-text: #02022F;
 
    background: #02022F;
    background-color: @background;
 
-   selected-text: #e3cae9;
+   text-color: #e3cae9;
+   selected-text: #da57b5;
 
 	background-alt: 	rgba(255, 255, 255, 0.1);
 
@@ -77,8 +79,8 @@ modified theme of "bresilla"
 }
 
 #prompt {
-   background-color:	@text-color;
-   text-color:			@background;
+   background-color:	@prompt-background;
+   text-color:			@prompt-text;
    padding: 			10 1% 10 1%;
 }
 

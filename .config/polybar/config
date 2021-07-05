@@ -11,8 +11,8 @@ text-color = #da57b5
 underline = #e3cae9
 
 focused-window-background = #1d1d46
-focused-window-label = #e3cae9
-unfocused-window-label = #da57b5
+focused-window-label = #da57b5
+unfocused-window-label = #e3cae9
 
 [bar/bar]
 ;monitor = ${env:MONITOR:HDMI-1}
