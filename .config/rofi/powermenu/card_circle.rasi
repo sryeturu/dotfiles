@@ -1,0 +1,102 @@
+/*
+ *
+ * Author  : Aditya Shakya
+ * Mail    : adi1090x@gmail.com
+ * Github  : @adi1090x
+ * Twitter : @adi1090x
+ *
+ */
+
+
+* {
+    background:                     #02022f;
+    background-alt:                 #02022f;
+    foreground:                     #FAF7CCff;
+    border:                         #da57b5;
+
+    selected:                       #02022f;
+    urgent:                         #DA4453FF;
+
+}
+
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+
+    border: 4px;
+    border-color: @border;
+
+    border-radius:                  5px;
+
+    height:                         25%;
+    width:                          54%;
+    location:                       center;
+    x-offset:                       0;
+    y-offset:                       -5%;
+}
+
+
+listview {
+    background-color:               @background;
+    margin:                         0% 0% 0% 0%;
+    spacing:                        2%;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         horizontal;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ listview ];
+    spacing:                        3.5%;
+    padding:                        4% 0% 0% 2%;
+}
+
+element {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  100%;
+}
+
+element-text {
+    font:                           "feather 32";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         4.5% 2.7% 8.5% 2.7%;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:               @urgent;
+    text-color:                     @foreground;
+    border-radius:                  0.2%;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+}
+
+element selected {
+    background-color:               @selected;
+    text-color:                     @foreground;
+    border:                         4px;
+    border-radius:                  100%;
+    border-color:                   @border;
+}
+
+element selected.urgent {
+    background-color:               @urgent;
+    text-color:                     @foreground;
+}
+
+element selected.active {
+    background-color:               @background-alt;
+    color:                          @foreground;
+}
+

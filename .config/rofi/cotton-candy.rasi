@@ -13,9 +13,11 @@ modified theme of "bresilla"
    text-color: #e3cae9;
    selected-text: #da57b5;
 
+   border-color: #da57b5;
+
 	background-alt: 	rgba(255, 255, 255, 0.1);
 
-   fromtop: 20%;
+   fromtop: 25%;
 }
 
 #window {
@@ -23,7 +25,12 @@ modified theme of "bresilla"
    anchor: 				north;
    location: 			north;
    y-offset: 			@fromtop;
-    /* border-radius:      8px; */
+
+   /* should be same as picom window radius */
+   border-radius:      5px; 
+
+   border: 4px;
+   border-color: @border-color;
 }
 
 #mainbox {
