@@ -14,6 +14,7 @@ app_menu=(
     ["Sublime Text <small><i>(code/text editor)</i></small>"]="subl"
     ["Google Chrome"]="google-chrome-stable"
     ["Adventure Quest"]="adventure-quest"
+    ["Font Manager"]="font-manager"
 )
 
 if [ $# -eq 0 ]; then

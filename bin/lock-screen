@@ -3,17 +3,32 @@
 # script from https://www.andreafortuna.org/2020/04/09 i3-how-to-make-a-pretty-lock-screen-with-a-four-lines-of-bash-script/
 
 icon="$HOME/.config/i3/lock.png"
-# create a temp file
+
+# create temp files
 img=$(mktemp /tmp/XXXXXXXXXX.png)
-# Take a screenshot of current desktop
-import -window root $img 
-# Pixelate the screenshot
-convert $img -scale 10% -scale 1000% $img
-# Alternatively, blur the screenshot (slow!)
-#convert $img -blur 2,5 $img
-# Add the lock image
-convert $img $icon -gravity center -composite $img
-# Run i3lock with custom background
-i3lock -u -i $img
-# Remove the tmp file
+out=$(mktemp /tmp/XXXXXXXXXX.png)
+
+# pixelation
+block_size=8
+screen_shot_tmp=$(mktemp /tmp/XXXXXXXXXX.png)
+ffmpeg -y -f x11grab -video_size 1366x768 -i $DISPLAY -filter_complex "scale=iw/${block_size}:ih/${block_size}:flags=area,scale=${block_size}*iw:${block_size}*ih:flags=neighbor"  -vframes 1 $screen_shot_tmp
+ffmpeg -y -i $screen_shot_tmp -vf scale=1366x768 $img
+
+
+#blur
+# box_blur=8
+# ffmpeg  -y -f x11grab -video_size 1366x768 -i $DISPLAY -filter_complex "boxblur=${box_blur}"  -vframes 1 $img
+
+
+#overlaying lock image
+ffmpeg -y -i $img -i $icon -filter_complex "overlay=(main_w/2-overlay_w/2):(main_h-overlay_h)/2" $out
+
+
+i3lock -u -i $out
+
+# Remove the tmp files
 rm $img
+rm $out
+
+# only need to remove when doing pixelation
+rm $screen_shot_tmp
