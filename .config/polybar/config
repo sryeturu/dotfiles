@@ -14,12 +14,13 @@ focused-window-background = #1d1d46
 focused-window-label = #da57b5
 unfocused-window-label = #e3cae9
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 [bar/bar]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 32
-;offset-x = 1%
-;offset-y = 1%
+
 radius = 5.0
 fixed-center = true
 
@@ -27,14 +28,19 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 2
-line-color = #f00
+; doesn't work? line-color = #1d1d46
 
-border-size = 3
+; offsets don't work, have to use transparent border hack: https://github.com/polybar/polybar/issues/597
+border-top = 5
+border-bottom = 0
+
+border-left = 13
+border-right = 13
+
 border-color = #00000000
 
-padding-top=20
 padding-left = 0
-padding-right = 2
+padding-right = 1
 
 module-margin-left = 1
 module-margin-right = 2
@@ -56,6 +62,7 @@ cursor-scroll = ns-resize
 
 enable-ipc = true
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [module/date]
 type = custom/script
@@ -69,6 +76,7 @@ label-foreground = ${colors.text-color}
 
 click-left = exec gnome-calendar & disown
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [module/i3]
 type = internal/i3
@@ -96,7 +104,6 @@ label-unfocused-foreground = ${colors.unfocused-window-label}
 label-unfocused-background = ${colors.background}
 label-unfocused-padding = 2
 
-
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
 label-visible-foreground = ${colors.focused-window-label}
@@ -104,11 +111,12 @@ label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 [module/wlan]
 type = internal/network
 interface = wlp2s0
 interval = 3.0
-
 
 label-connected = %{A1:gnome-control-center wifi &:}%essid%%{A}
 label-connected-foreground = ${colors.text-color}
@@ -121,6 +129,8 @@ label-disconnected-foreground = ${colors.text-color}
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.underline}
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -142,13 +152,13 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
-
 label-muted = muted
 label-muted-foreground = ${colors.text-color}
 
 format-muted =  <label-muted> 
 format-muted-underline= ${colors.underline}
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 [module/battery]
 type = internal/battery
@@ -198,10 +208,3 @@ label-foreground = ${colors.thing-color}
 format =  <label>
 format-underline = ${colors.underline}
 
-
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
-; vim:ft=dosini
