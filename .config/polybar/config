@@ -195,10 +195,10 @@ label-full-foreground = ${colors.text-color}
 format-full =  <label-full>
 format-full-underline = ${colors.underline}
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 [module/temperature]
 type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
 
 interval = 1
 
