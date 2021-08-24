@@ -1,6 +1,6 @@
 configuration {
 	theme: "cotton-candy";
-	modi: "apps:~/.config/rofi/rofi-app-menu, configs:~/.config/rofi/rofi-config-menu";
+	modi: "apps:~/.config/rofi/rofi-app-menu,configs:~/.config/rofi/rofi-config-menu";
 	width: 40;
 	lines: 6;
 
