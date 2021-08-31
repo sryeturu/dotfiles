@@ -1,11 +1,6 @@
 #!/usr/bin/bash
 
-feh --bg-scale ~/wallpapers/cotton_candy_seerlight.jpg
-
-killall -q polybar
-while pgrep -x polybar >/dev/null; do sleep 1; done
-polybar bar &
-
+feh --no-fehbg --bg-scale ~/wallpapers/cotton_candy_seerlight.jpg
 
 killall -q redshift
 while pgrep -x redshift >/dev/null; do sleep 1; done
@@ -18,3 +13,14 @@ picom &
 killall -q dunst
 while pgrep -x dunst >/dev/null; do sleep 1; done
 dunst &
+
+killall -q polybar
+while pgrep -x polybar >/dev/null; do sleep 1; done
+
+MONITOR=eDP-1 polybar main &
+
+monitor_count=$(xrandr | grep connected | wc -l)
+
+if [ "$monitor_count" -eq 2 ]; then
+	MONITOR=HDMI-1 polybar main &
+fi 

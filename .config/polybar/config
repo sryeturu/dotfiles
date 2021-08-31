@@ -16,8 +16,12 @@ unfocused-window-label = #e3cae9
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-[bar/bar]
-;monitor = ${env:MONITOR:HDMI-1}
+[section/base]
+
+; defaulting to primary monitor eDP1. This gets overriden using env var when launching polybar
+;https://github.com/polybar/polybar/wiki
+
+monitor = ${env:MONITOR:eDP1}
 width = 100%
 height = 32
 
@@ -61,6 +65,11 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 enable-ipc = true
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[bar/main]
+inherit = section/base
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -118,7 +127,7 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 
-label-connected = %{A1:gnome-control-center wifi &:}%essid%%{A}
+label-connected = %{A1:gnome-control-center wifi &:}%essid:0:10:...%%{A}
 label-connected-foreground = ${colors.text-color}
 
 format-connected =  <label-connected>
