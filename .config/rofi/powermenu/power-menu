@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 ## Author  : Aditya Shakya
-## Mail    : adi1090x@gmail.com
 ## Github  : @adi1090x
-## Twitter : @adi1090x
-
 
 theme="card_circle"
 dir="$HOME/.config/rofi/powermenu"
@@ -12,6 +9,7 @@ dir="$HOME/.config/rofi/powermenu"
 rofi_command="rofi -theme $dir/$theme"
 
 # Options
+
 lock=""
 suspend=""
 logout=""
@@ -31,12 +29,7 @@ case $chosen in
 		systemctl reboot
         ;;
     $lock)
-		if [[ -f /usr/bin/i3lock ]]; then
-			# custom lock screen script
-			lock-screen
-		elif [[ -f /usr/bin/betterlockscreen ]]; then
-			betterlockscreen -l
-		fi
+		lock-screen
         ;;
     $suspend)
 		systemctl suspend

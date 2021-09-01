@@ -16,7 +16,6 @@
 
     selected:                       #02022f;
     urgent:                         #DA4453FF;
-
 }
 
 
@@ -32,9 +31,11 @@ window {
 
     height:                         25%;
     width:                          55%;
+    width:                          55%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       -5%;
+
 }
 
 
@@ -69,18 +70,7 @@ element-text {
     margin:                         4.5% 2.7% 8.5% 2.7%;
 }
 
-element normal.urgent,
-element alternate.urgent {
-    background-color:               @urgent;
-    text-color:                     @foreground;
-    border-radius:                  0.2%;
-}
 
-element normal.active,
-element alternate.active {
-    background-color:               @background-alt;
-    text-color:                     @foreground;
-}
 
 element selected {
     background-color:               @selected;
@@ -88,15 +78,5 @@ element selected {
     border:                         4px;
     border-radius:                  100%;
     border-color:                   @border;
-}
-
-element selected.urgent {
-    background-color:               @urgent;
-    text-color:                     @foreground;
-}
-
-element selected.active {
-    background-color:               @background-alt;
-    color:                          @foreground;
 }
 

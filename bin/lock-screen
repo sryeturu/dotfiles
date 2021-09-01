@@ -1,34 +1,43 @@
 #!/bin/bash
 
-# script from https://www.andreafortuna.org/2020/04/09 i3-how-to-make-a-pretty-lock-screen-with-a-four-lines-of-bash-script/
+IMG="img"
+PARAMS=""
+DISPLAY_RE="([0-9]+)x([0-9]+)\\+([0-9]+)\\+([0-9]+)"
+IMAGE_RE="([0-9]+)x([0-9]+)"
 
-icon="$HOME/.config/i3/lock.png"
+scrot -z -o $IMG
 
-# create temp files
-img=$(mktemp /tmp/XXXXXXXXXX.png)
-out=$(mktemp /tmp/XXXXXXXXXX.png)
+LOCK="$HOME/.config/i3/lock.png"
 
-# pixelation
-block_size=8
-screen_shot_tmp=$(mktemp /tmp/XXXXXXXXXX.png)
-ffmpeg -y -f x11grab -video_size 1366x768 -i $DISPLAY -filter_complex "scale=iw/${block_size}:ih/${block_size}:flags=area,scale=${block_size}*iw:${block_size}*ih:flags=neighbor"  -vframes 1 $screen_shot_tmp
-ffmpeg -y -i $screen_shot_tmp -vf scale=1366x768 $img
+LOCK_IMAGE_INFO=`identify $LOCK`
+[[ $LOCK_IMAGE_INFO =~ $IMAGE_RE ]]
 
+IMAGE_WIDTH=${BASH_REMATCH[1]}
+IMAGE_HEIGHT=${BASH_REMATCH[2]}
 
-#blur
-# box_blur=8
-# ffmpeg  -y -f x11grab -video_size 1366x768 -i $DISPLAY -filter_complex "boxblur=${box_blur}"  -vframes 1 $img
+# getting center coordinates of all outputs to place lock image
+# from: https://github.com/guimeira/i3lock-fancy-multimonitor 
 
+while read LINE
+do
 
-#overlaying lock image
-ffmpeg -y -i $img -i $icon -filter_complex "overlay=(main_w/2-overlay_w/2):(main_h-overlay_h)/2" $out
+  if [[ $LINE =~ $DISPLAY_RE ]]; then
 
+    WIDTH=${BASH_REMATCH[1]}
+    HEIGHT=${BASH_REMATCH[2]}
 
-i3lock -u -i $out
+    X=${BASH_REMATCH[3]}
+    Y=${BASH_REMATCH[4]}
 
-# Remove the tmp files
-rm $img
-rm $out
+    POS_X=$(($X+$WIDTH/2-$IMAGE_WIDTH/2))
+    POS_Y=$(($Y+$HEIGHT/2-$IMAGE_HEIGHT/2))
 
-# only need to remove when doing pixelation
-rm $screen_shot_tmp
+    PARAMS="$PARAMS '$LOCK' '-geometry' '+$POS_X+$POS_Y' '-composite'"
+  fi
+
+done <<<"`xrandr`"
+
+PARAMS="'$IMG' '-scale' '10%' '-scale' '1000%' $PARAMS '$IMG'"
+eval convert $PARAMS
+
+i3lock -u -i $IMG
