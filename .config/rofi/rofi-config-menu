@@ -14,7 +14,7 @@ then
 else
     CUR_DIR=$(cat "$PREV_LOC_FILE")
 
-    if [ "$ROFI_RETV" -eq 10 ] # open editor in current directory
+    if [ "$1" = "." ] # open editor in current directory
     then
         coproc ("$EDITOR" "$CUR_DIR" > /dev/null 2>&1)
         exit 0
@@ -36,6 +36,7 @@ else
 
     if [ "$CUR_DIR" != ~/.config/ ]
     then
+        echo "."
         echo ".."
     fi
 fi

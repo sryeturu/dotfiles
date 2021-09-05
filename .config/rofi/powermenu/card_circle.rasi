@@ -1,9 +1,6 @@
 /*
- *
  * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
  * Github  : @adi1090x
- * Twitter : @adi1090x
  *
  */
 
@@ -29,12 +26,13 @@ window {
 
     border-radius:                  5px;
 
-    height:                         25%;
-    width:                          55%;
-    width:                          55%;
+    height:                         210px;
+    width:                          865px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       -5%;
+
+
 
 }
 
@@ -42,7 +40,7 @@ window {
 listview {
     background-color:               @background;
     margin:                         0% 0% 0% 0%;
-    spacing:                        2%;
+    spacing:                        25px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         horizontal;
@@ -51,7 +49,6 @@ listview {
 mainbox {
     background-color:               @background;
     children:                       [ listview ];
-    spacing:                        3.5%;
     padding:                        4% 0% 0% 2%;
 }
 
@@ -60,14 +57,18 @@ element {
     text-color:                     @foreground;
     orientation:                    horizontal;
     border-radius:                  100%;
+    padding: 0px 12px 0px 12px;
 }
 
 element-text {
     font:                           "feather 32";
     expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
+    horizontal-align:               0.8;
+    vertical-align:                 0.8;
     margin:                         4.5% 2.7% 8.5% 2.7%;
+
+    background-color: inherit;
+    text-color:       inherit;
 }
 
 
@@ -80,3 +81,7 @@ element selected {
     border-color:                   @border;
 }
 
+element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}

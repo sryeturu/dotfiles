@@ -19,7 +19,7 @@ shutdown=""
 # Variable passed to rofi
 options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
 
-chosen="$(echo -e "$options" | $rofi_command  -dmenu -selected-row 1)"
+chosen="$(echo -e "$options" | $rofi_command  -dmenu -monitor eDP-1 -selected-row 1)"
 
 case $chosen in
     $shutdown)

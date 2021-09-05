@@ -4,6 +4,7 @@ modified theme of "bresilla"
 
 
 * {
+   
    prompt-background: #da57b5;
    prompt-text: #02022F;
 
@@ -38,27 +39,16 @@ modified theme of "bresilla"
 }
 
 #listview {
+   lines:            7;
    fixed-height: 		false;
    dynamic: 			true;
    scrollbar: 			false;
-   padding: 			10px;
-   /* border:              5px; */
-   background: 			@background;
+   padding: 			15px;
 }
 
 #element {
     padding: 			10px 25px 10px 25px;
-    /* border-radius:      4px; */
-}
-
-#element.normal.normal {
-   background-color: 	@background;
-   text-color: 			@text-color;
-}
-
-#element.normal.active {
-   background-color: 	@background;
-   text-color: 			@text-color;
+    // radius of hilighted text border-radius:      4px;
 }
 
 #element.selected.normal {
@@ -66,17 +56,7 @@ modified theme of "bresilla"
     text-color:       	@selected-text;
 }
 
-#element.selected.active {
-    background-color: 	@foreground;
-    text-color:       	@text-color;
-}
-
 #element.alternate.normal {
-    background-color: 	@background;
-    text-color:       	@text-color;
-}
-
-#element.alternate.active {
     background-color: 	@background;
     text-color:       	@text-color;
 }
@@ -96,4 +76,9 @@ modified theme of "bresilla"
    text-color:			@selected-text;
    /* border-radius:       4px; */
    padding: 			10 0 10 10;
+}
+
+element-text {
+   background-color: transparent;
+   text-color:       inherit;
 }
