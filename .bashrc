@@ -115,3 +115,12 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+# Peachpay Development Start
+function peachpay {
+    cd /home/sy/peachpay-environment && bash peachpay $*
+    cd -
+}
+# Peachpay Development End
+# PHP Linter Path Start
+export PATH="/home/sy/peachpay-environment/php-linter/vendor/bin:$PATH"
+# PHP Linter Path End

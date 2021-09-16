@@ -137,6 +137,8 @@ bindsym Mod1+r mode "resize"
 
 #######################################################################
 
+exec_always --no-startup-id bash ~/.startup
+
 set $BROWSER google-chrome-stable
 
 for_window [class="."] border pixel 0
@@ -161,5 +163,4 @@ workspace 3 output eDP-1
 workspace 4 output eDP-1
 workspace 5 output HDMI-1
 
-exec_always --no-startup-id bash ~/.startup
 

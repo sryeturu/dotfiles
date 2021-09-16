@@ -1,26 +1,38 @@
 #!/usr/bin/bash
 
-feh --no-fehbg --bg-scale ~/wallpapers/cotton_candy_seerlight.jpg
+# hacky but i3 reload handles when we plug/unplug monitor
+# doing a reload when both outputs are one and stat on, glitches a bit
+# this is probably because of turning off the HDMI-1 output
+# clean this up and find a better way to handle this sometime (maybe set env vars?)
 
-killall -q redshift
-while pgrep -x redshift >/dev/null; do sleep 1; done
-redshift &
+killall -q polybar
+while pgrep -x polybar >/dev/null; do sleep 1; done
+
+xrandr --output HDMI-1 --off
+
+monitor_count=$(xrandr | grep "\bconnected\b" | wc -l)
+
+if [ "$monitor_count" -eq 2 ]; then
+	xrandr --output HDMI-1 --auto --left-of eDP-1
+fi 
+
+feh --no-fehbg --bg-scale ~/wallpapers/cotton_candy_seerlight.jpg
 
 killall -q picom
 while pgrep -x picom >/dev/null; do sleep 1; done
 picom &
 
+killall -q redshift
+while pgrep -x redshift >/dev/null; do sleep 1; done
+redshift &
+
 killall -q dunst
 while pgrep -x dunst >/dev/null; do sleep 1; done
 dunst &
 
-killall -q polybar
-while pgrep -x polybar >/dev/null; do sleep 1; done
-
 MONITOR=eDP-1 polybar main &
-
-monitor_count=$(xrandr | grep connected | wc -l)
 
 if [ "$monitor_count" -eq 2 ]; then
 	MONITOR=HDMI-1 polybar main &
 fi 
+
