@@ -46,8 +46,6 @@ bindsym Mod1+v split v
 bindsym Mod1+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym Mod1+s layout stacking
-bindsym Mod1+w layout tabbed
 bindsym Mod1+e layout toggle split
 
 # toggle tiling / floating
@@ -156,6 +154,8 @@ bindsym Mod1+l exec --no-startup-id power-menu
 
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness 
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
+
+bindsym Mod1+s exec scrot ~/Screenshots/%Y-%m-%d-%H-%M-%S.png
 
 workspace 1 output eDP-1
 workspace 2 output eDP-1
