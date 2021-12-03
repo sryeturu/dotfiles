@@ -152,15 +152,13 @@ bindsym Mod1+i exec --no-startup-id $BROWSER --incognito
 
 bindsym Mod1+l exec --no-startup-id power-menu
 
+bindsym --release Mod1+s exec --no-startup-id maim -s ~/Screenshots/$(date +%T).png
+
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness 
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
-
-bindsym Mod1+s exec scrot ~/Screenshots/%Y-%m-%d-%H-%M-%S.png
 
 workspace 1 output eDP-1
 workspace 2 output eDP-1
 workspace 3 output eDP-1
 workspace 4 output eDP-1
 workspace 5 output HDMI-1
-
-
