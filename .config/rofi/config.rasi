@@ -1,8 +1,9 @@
 configuration {
-	theme: "cotton-candy";
 	modi: "apps:~/.config/rofi/rofi-app-menu,configs:~/.config/rofi/rofi-config-menu";
 	
 	font: "hack 12";
 
 	kb-mode-next:	"Alt+m";
 }
+
+@theme "cotton-candy"

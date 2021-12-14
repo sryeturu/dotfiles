@@ -4,7 +4,6 @@
  *
  */
 
-
 * {
     background:                     #02022f;
     background-alt:                 #02022f;
@@ -15,7 +14,6 @@
     urgent:                         #DA4453FF;
 }
 
-
 window {
     transparency:                   "real";
     background-color:               @background;
@@ -23,19 +21,14 @@ window {
 
     border: 4px;
     border-color: @border;
-
     border-radius:                  5px;
 
-    height:                         210px;
-    width:                          865px;
+    height:                         25%;
+    width:                          55%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       -5%;
-
-
-
 }
-
 
 listview {
     background-color:               @background;
@@ -49,14 +42,13 @@ listview {
 mainbox {
     background-color:               @background;
     children:                       [ listview ];
-    padding:                        4% 0% 0% 2%;
+    padding:                        4% 0% 0% 4%;
 }
 
 element {
     background-color:               @background-alt;
     text-color:                     @foreground;
     orientation:                    horizontal;
-    border-radius:                  100%;
     padding: 0px 12px 0px 12px;
 }
 
@@ -65,20 +57,17 @@ element-text {
     expand:                         true;
     horizontal-align:               0.8;
     vertical-align:                 0.8;
-    margin:                         4.5% 2.7% 8.5% 2.7%;
+    margin:                         4.5% 2.7% 4.5% 2.7%;
 
     background-color: inherit;
     text-color:       inherit;
 }
 
-
-
 element selected {
     background-color:               @selected;
     text-color:                     @foreground;
-    border:                         4px;
-    border-radius:                  100%;
     border-color:                   @border;
+    text-color:                     #da57b5;
 }
 
 element-icon {
