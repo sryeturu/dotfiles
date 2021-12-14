@@ -152,7 +152,7 @@ bindsym Mod1+i exec --no-startup-id $BROWSER --incognito
 
 bindsym Mod1+l exec --no-startup-id power-menu
 
-bindsym --release Mod1+s exec --no-startup-id maim -s ~/Screenshots/$(date +%T).png
+bindsym --release Mod1+s exec --no-startup-id flameshot gui -p ~/screenshots
 
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness 
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
