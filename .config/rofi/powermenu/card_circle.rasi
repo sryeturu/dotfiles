@@ -33,7 +33,7 @@ window {
 listview {
     background-color:               @background;
     margin:                         0% 0% 0% 0%;
-    spacing:                        25px;
+    spacing:                        20px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         horizontal;

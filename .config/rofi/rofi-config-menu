@@ -1,16 +1,16 @@
 #!/usr/bin/bash
 # https://github.com/davatorium/rofi-scripts/blob/master/mode-scripts/rofi-file-browser.sh
 
-echo -en "\0prompt\x1fsearch config:\n"
+echo -en "\0prompt\x1fsearch files:\n"
 
-EDITOR=subl
+EDITOR=code
 
-CUR_DIR=~/.config/
+CUR_DIR=~/
 PREV_LOC_FILE=~/.config/rofi/rofi_prev_loc
 
 if [ $# -eq 0 ] # launching confing menu for the first time with no args
 then
-    echo "$CUR_DIR" > "$PREV_LOC_FILE" # init "$PREV_LOC_FILE" to ~/.config
+    echo "$CUR_DIR" > "$PREV_LOC_FILE" # init "$PREV_LOC_FILE" to ~/
 else
     CUR_DIR=$(cat "$PREV_LOC_FILE")
 
@@ -34,11 +34,11 @@ else
         fi
     fi
 
-    if [ "$CUR_DIR" != ~/.config/ ]
+    if [ "$CUR_DIR" != ~/ ]
     then
         echo "."
         echo ".."
     fi
 fi
 
-ls "$CUR_DIR" --group-directories-first --color=never --indicator-style=slash
+ls "$CUR_DIR" --almost-all  --group-directories-first --color=never --indicator-style=slash

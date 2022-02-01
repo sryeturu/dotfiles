@@ -1,4 +1,4 @@
-! writing:
+ ! writing:
 *.foreground:   #e3cae9
 
 !background
@@ -53,6 +53,7 @@
 
 
 !! URxvt Appearance
+
 
 URxvt.font: xft:Hack:style=Regular:size=12
 URxvt.boldFont: xft:Hack:style=Bold:size=12

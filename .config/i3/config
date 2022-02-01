@@ -152,13 +152,19 @@ bindsym Mod1+i exec --no-startup-id $BROWSER --incognito
 
 bindsym Mod1+l exec --no-startup-id power-menu
 
-bindsym --release Mod1+s exec --no-startup-id flameshot gui -p ~/screenshots
+bindsym --release Mod1+s exec --no-startup-id flameshot gui
 
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5 # increase screen brightness 
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5 # decrease screen brightness
 
+bindsym --release Control+j exec --no-startup-id xdotool key --clearmodifiers Left
+bindsym --release Control+l exec --no-startup-id xdotool key --clearmodifiers Right
+bindsym --release Control+i exec --no-startup-id xdotool key --clearmodifiers Up
+bindsym --release Control+k exec --no-startup-id xdotool key  --clearmodifiers Down
+
+bindsym --release Control+9 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym --release Control+0 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym --release Control+8 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+
 workspace 1 output eDP-1
-workspace 2 output eDP-1
-workspace 3 output eDP-1
-workspace 4 output eDP-1
-workspace 5 output HDMI-1
+workspace 2 output HDMI-1

@@ -13,8 +13,8 @@ app_menu=(
     ["Nautilus <small><i>(file manager)</i></small>"]="nautilus"
     ["Sublime Text <small><i>(code/text editor)</i></small>"]="subl"
     ["Google Chrome"]="google-chrome-stable"
-    ["Adventure Quest"]="adventure-quest"
     ["Font Manager"]="font-manager"
+    ["VSCode"]="code"
 )
 
 if [ $# -eq 0 ]; then

@@ -124,7 +124,7 @@ label-visible-padding = ${self.label-focused-padding}
 
 [module/wlan]
 type = internal/network
-interface = wlp2s0
+interface = wlp4s0
 interval = 3.0
 
 label-connected = %{A1:gnome-control-center wifi &:}%essid:0:10:...%%{A}
@@ -171,8 +171,8 @@ format-muted-underline= ${colors.underline}
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AD0
+battery = BAT1
+adapter = ACAD
 full-at = 98
 
 ; seconds I think?
@@ -208,6 +208,8 @@ format-full-underline = ${colors.underline}
 
 [module/temperature]
 type = internal/temperature
+
+hwmon-path = /sys/class/hwmon/hwmon4/temp1_input
 
 interval = 1
 

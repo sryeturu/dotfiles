@@ -30,6 +30,10 @@ killall -q dunst
 while pgrep -x dunst >/dev/null; do sleep 1; done
 dunst &
 
+killall -q flameshot
+while pgrep -x flameshot >/dev/null; do sleep 1; done
+flameshot &
+
 MONITOR=eDP-1 polybar main &
 
 if [ "$monitor_count" -eq 2 ]; then
