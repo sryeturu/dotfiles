@@ -6,7 +6,7 @@ echo -en "\0prompt\x1fsearch files:\n"
 EDITOR=code
 
 CUR_DIR=~/
-PREV_LOC_FILE=~/.config/rofi/rofi_prev_loc
+PREV_LOC_FILE=~/.config/rofi/.prev_location
 
 if [ $# -eq 0 ] # launching confing menu for the first time with no args
 then

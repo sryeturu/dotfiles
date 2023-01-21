@@ -19,21 +19,22 @@ fi
 feh --no-fehbg --bg-scale ~/wallpapers/cotton_candy_seerlight.jpg
 
 killall -q picom
-while pgrep -x picom >/dev/null; do sleep 1; done
+while pgrep -x picom > /dev/null; do sleep 1; done
 picom &
 
 killall -q redshift
-while pgrep -x redshift >/dev/null; do sleep 1; done
+while pgrep -x redshift > /dev/null; do sleep 1; done
 redshift &
 
 killall -q dunst
-while pgrep -x dunst >/dev/null; do sleep 1; done
+while pgrep -x dunst > /dev/null; do sleep 1; done
 dunst &
 
 killall -q flameshot
-while pgrep -x flameshot >/dev/null; do sleep 1; done
+while pgrep -x flameshot > /dev/null; do sleep 1; done
 flameshot &
 
+#setting the monitor variable before starting polybar
 MONITOR=eDP-1 polybar main &
 
 if [ "$monitor_count" -eq 2 ]; then
