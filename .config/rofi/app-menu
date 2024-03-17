@@ -13,10 +13,10 @@ app_menu=(
     ["Rxvt <small><i>(urxvt terminal emulator)</i></small>"]="urxvt"
     ["Lxappearance <small><i>(theme switcher)</i></small>"]="lxappearance"
     ["PCManFM <small><i>(file manager)</i></small>"]="pcmanfm"
-    ["Sublime Text <small><i>(code/text editor)</i></small>"]="subl"
     ["Google Chrome"]="google-chrome-stable"
     ["Font Manager"]="font-manager"
     ["VSCode"]="code"
+    ["feh <small><i>(image viewer)</i></small>"]="feh"
 )
 
 if [ $# -eq 0 ]; then
