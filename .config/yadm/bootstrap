@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# 1. Update System
+echo "--- Updating System ---"
+sudo pacman -Syu --noconfirm
+
+# 2. Install Paru (AUR Helper) if not found
+if ! command -v paru &> /dev/null; then
+    echo "--- Paru not found. Installing Paru... ---"
+    sudo pacman -S --needed base-devel git --noconfirm
+    temp_dir=$(mktemp -d)
+    git clone https://aur.archlinux.org/paru-bin.git "$temp_dir"
+    cd "$temp_dir" && makepkg -si --noconfirm
+    cd - && rm -rf "$temp_dir"
+fi
+
+# 3. Define Package List
+PACKAGES=(
+    alsa-utils
+    anki-bin
+    beautyline
+    calibre
+    conky
+    cronie
+    discord
+    dunst
+    dust
+    efibootmgr
+    feh
+    font-manager
+    ghostty
+    google-chrome
+    grub
+    i3-wm
+    i3lock
+    light
+    lxappearance
+    man-pages
+    nano
+    networkmanager
+    noto-fonts
+    noto-fonts-emoji
+    papirus-icon-theme
+    pavucontrol
+    picom
+    polybar
+    redshift
+    reflector
+    rofi
+    sudo
+    tlp
+    ttf-hack
+    ttf-icomoon-feather
+    ttf-roboto
+    udiskie
+    uv
+    visual-studio-code-bin
+    woff2-font-awesome
+    xorg-server
+    xorg-xinit
+    xorg-xrandr
+    yadm
+    zip
+)
+
+# 4. Install Packages
+echo "--- Installing Packages from List ---"
+paru -S --needed --noconfirm "${PACKAGES[@]}"
+
+# 5. Enable Services
+echo "--- Enabling Services ---"
+sudo systemctl enable --now NetworkManager
+sudo systemctl enable --now tlp
+sudo systemctl enable --now cronie
+
+echo "--- Bootstrap Complete! ---"

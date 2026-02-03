@@ -16,6 +16,7 @@ app_menu=(
     ["Google Chrome"]="google-chrome-stable"
     ["Font Manager"]="font-manager"
     ["VSCode"]="code"
+    ["anki"]="anki"
     ["feh <small><i>(image viewer)</i></small>"]="feh"
 )
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-## Author  : Aditya Shakya
-## Github  : @adi1090x
+# power menu from Aditya Shakya (@adi1090x)
 
 theme="card_circle"
 dir="$HOME/.config/rofi/powermenu"
