@@ -1,20 +1,33 @@
 #!/bin/bash
 
-# 1. Update System
-echo "--- Updating System ---"
+echo "--- Updating System Databases ---"
 sudo pacman -Syu --noconfirm
 
-# 2. Install Paru (AUR Helper) if not found
 if ! command -v paru &> /dev/null; then
-    echo "--- Paru not found. Installing Paru... ---"
+    echo "--- Paru not found. Building from source... ---"
+    
     sudo pacman -S --needed base-devel git --noconfirm
+    
+    # Create a clean temporary build space
     temp_dir=$(mktemp -d)
-    git clone https://aur.archlinux.org/paru-bin.git "$temp_dir"
+    git clone https://aur.archlinux.org/paru.git "$temp_dir"
+    
     cd "$temp_dir" && makepkg -si --noconfirm
+    
+    # Clean up
     cd - && rm -rf "$temp_dir"
+else
+    echo "--- Paru is already installed. Checking for library health... ---"
+    if ! paru -V &>/dev/null; then
+        echo "--- Paru is broken (Library mismatch). Rebuilding... ---"
+        temp_dir=$(mktemp -d)
+        git clone https://aur.archlinux.org/paru.git "$temp_dir"
+        cd "$temp_dir" && makepkg -si --noconfirm
+        cd - && rm -rf "$temp_dir"
+    fi
 fi
 
-# 3. Define Package List
+# --- PACKAGE LIST ---
 PACKAGES=(
     alsa-utils
     anki-bin
@@ -56,6 +69,9 @@ PACKAGES=(
     uv
     visual-studio-code-bin
     woff2-font-awesome
+    wp-cli
+    xclip
+    xdotool
     xorg-server
     xorg-xinit
     xorg-xrandr
@@ -63,14 +79,12 @@ PACKAGES=(
     zip
 )
 
-# 4. Install Packages
 echo "--- Installing Packages from List ---"
 paru -S --needed --noconfirm "${PACKAGES[@]}"
 
-# 5. Enable Services
 echo "--- Enabling Services ---"
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now tlp
 sudo systemctl enable --now cronie
 
-echo "--- Bootstrap Complete! ---"
+echo "--- [ SUCCESS ] Bootstrap Complete! ---"
