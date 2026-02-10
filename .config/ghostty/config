@@ -1,0 +1,56 @@
+# --- Fonts ---
+font-family = Hack
+font-size = 12
+
+# --- Window & Layout ---
+# Removes the gray title bar to match urxvt's borderless look
+gtk-titlebar = false
+
+# Matches URxvt.internalBorder: 24
+window-padding-x = 24
+window-padding-y = 24
+
+# Prevents text cropping in small i3 tiles by dynamic padding adjustment
+window-padding-balance = true
+
+# --- Cursor ---
+# Forces the thick solid block you had in urxvt
+cursor-style = block
+# Prevents the shell from forcing the cursor into a skinny bar
+shell-integration-features = no-cursor
+
+cursor-style-blink = true
+
+# --- Colors (Theming) ---
+background = #02022f
+foreground = #e3cae9
+
+# NEW SYNTAX: Replaces bold-is-bright to fix prompt colors
+bold-color = bright
+
+# Color Palette (Replicating your .Xresources)
+# 0-7 (Normal)
+palette = 0=#02022f
+palette = 1=#07fc03
+palette = 2=#e3f700
+palette = 3=#00fffb
+palette = 4=#da57b5
+palette = 5=#679fdc
+palette = 6=#808080
+palette = 7=#e3cae9
+
+# 8-15 (Bright)
+palette = 8=#02022f
+palette = 9=#b7009d
+palette = 10=#5f8abb
+palette = 11=#fc0303
+palette = 12=#da57b5
+palette = 13=#e3cae9
+palette = 14=#964B00
+palette = 15=#e3cae9
+
+# --- Compatibility & Features ---
+# Fixes shell color detection
+term = xterm-256color
+keybind = performable:ctrl+c=copy_to_clipboard
+
