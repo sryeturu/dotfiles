@@ -1,40 +1,53 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
+# ===============================
+# Startup Script for Polybar & GUI Apps
+# ===============================
 
-# Wallpaper path
-WALLPAPER_PATH=~/wallpapers/cotton_candy_seerlight.jpg
+# ---------- Wallpaper ----------
+WALLPAPER_PATH="$HOME/wallpapers/test.png"
+feh --no-fehbg --bg-scale "$WALLPAPER_PATH" &
 
-killall -q polybar
-while pgrep -x polybar >/dev/null; do sleep 1; done
+# ---------- Set Environment Variables ----------
+# Wireless interface for Polybar
+export POLYBAR_WIRELESS_IFACE=$(ip -brief link | awk '/wl/ {print $1; exit}')
 
+# ---------- Monitor Setup ----------
 xrandr --output HDMI-1 --off
-
 monitor_count=$(xrandr | grep "\bconnected\b" | wc -l)
 
 if [ "$monitor_count" -eq 2 ]; then
-	xrandr --output HDMI-1 --auto --above eDP-1
-fi 
+    xrandr --output HDMI-1 --auto --above eDP-1
+    # Small sleep to let X11 settle after resolution changes
+    sleep 1
+fi
 
-feh --no-fehbg --bg-scale "$WALLPAPER_PATH"
+# ---------- Kill and Launch GUI Apps ----------
+restart_app() {
+    local app=$1
+    # Kill the app and wait for it to actually die
+    killall -q "$app"
+    while pgrep -u $UID -x "$app" >/dev/null; do sleep 0.2; done
+    "$app" &
+}
 
-killall -q picom
-while pgrep -x picom > /dev/null; do sleep 1; done
-picom &
+restart_app picom
+restart_app redshift
+restart_app dunst
+restart_app flameshot
 
-killall -q redshift
-while pgrep -x redshift > /dev/null; do sleep 1; done
-redshift &
+# ---------- Polybar (need special handling) ----------
+# 1. Kill all existing polybar instances
+killall -q polybar
 
-killall -q dunst
-while pgrep -x dunst > /dev/null; do sleep 1; done
-dunst &
+# 2. Wait until the processes have been shut down completely
+while pgrep -u $UID -x polybar >/dev/null; do sleep 0.2; done
 
-killall -q flameshot
-while pgrep -x flameshot > /dev/null; do sleep 1; done
-flameshot &
-
-#setting the monitor variable before starting polybar
+# 3. Launch Polybar for main display
 MONITOR=eDP-1 polybar main &
 
+# 4. Launch Polybar for HDMI-1 if connected
 if [ "$monitor_count" -eq 2 ]; then
-	MONITOR=HDMI-1 polybar main &
+    MONITOR=HDMI-1 polybar main &
 fi
+
+echo "Desktop environment reloaded successfully."

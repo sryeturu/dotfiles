@@ -28,7 +28,7 @@ foreground = #e3cae9
 # NEW SYNTAX: Replaces bold-is-bright to fix prompt colors
 bold-color = bright
 
-# Color Palette (Replicating your .Xresources)
+# Color Palette
 # 0-7 (Normal)
 palette = 0=#02022f
 palette = 1=#07fc03

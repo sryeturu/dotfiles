@@ -1,14 +1,17 @@
 #!/bin/bash
 
-charge_level=$(cat /sys/class/power_supply/BAT1/capacity)
-is_charging=$(cat /sys/class/power_supply/ACAD/online)
+# 1. Path & Value Detection
+BAT_DIR=$(ls -d /sys/class/power_supply/BAT* | head -n 1)
+AC_DIR=$(ls -d /sys/class/power_supply/A* | head -n 1)
 
-notification_id=38294 # random notifications id for low battery
+charge_level=$(cat "$BAT_DIR/capacity")
+is_charging=$(cat "$AC_DIR/online")
 
-battery_notify_level=25
+# 2. Environment (Necessary for Cron/Systemd)
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 
-if (( "$charge_level" <= "$battery_notify_level" &&  "$is_charging" == 0 )); then
-    # needed to display when running as cronjob
-    export DISPLAY=:0
-    sudo -u $USER DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus dunstify " LOW BATTERY ${charge_level}%"  -u criticial -r "$notification_id" 
+# 3. Notification Logic
+if [ "$is_charging" -eq 0 ] && [ "$charge_level" -le 25 ]; then
+    dunstify " LOW BATTERY ${charge_level}%" -u critical -r 38294
 fi

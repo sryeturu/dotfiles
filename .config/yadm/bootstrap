@@ -30,8 +30,7 @@ fi
 # --- PACKAGE LIST ---
 PACKAGES=(
     alsa-utils
-    anki-bin
-    beautyline
+    anki
     calibre
     conky
     cronie
@@ -40,6 +39,7 @@ PACKAGES=(
     dust
     efibootmgr
     feh
+    flameshot
     font-manager
     ghostty
     google-chrome
@@ -51,9 +51,11 @@ PACKAGES=(
     man-pages
     nano
     networkmanager
-    noto-fonts
-    noto-fonts-emoji
+    pcmanfm
     papirus-icon-theme
+    pipewire
+    pipewire-pulse
+    wireplumber
     pavucontrol
     picom
     polybar
@@ -68,8 +70,8 @@ PACKAGES=(
     udiskie
     uv
     visual-studio-code-bin
-    woff2-font-awesome
-    wp-cli
+    otf-font-awesome
+    keepassxc
     xclip
     xdotool
     xorg-server
@@ -77,14 +79,26 @@ PACKAGES=(
     xorg-xrandr
     yadm
     zip
+    openssh
+    libinput
 )
 
 echo "--- Installing Packages from List ---"
 paru -S --needed --noconfirm "${PACKAGES[@]}"
 
-echo "--- Enabling Services ---"
+if ! groups "$USER" | grep -qw video; then
+    echo "--- Adding $USER to video group (for brightness) ---"
+    sudo usermod -aG video "$USER"
+fi
+
+
+echo "--- Enabling System Services ---"
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now tlp
 sudo systemctl enable --now cronie
+
+echo "--- Enabling User Services ---"
+
+systemctl --user enable pipewire pipewire-pulse wireplumber
 
 echo "--- [ SUCCESS ] Bootstrap Complete! ---"

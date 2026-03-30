@@ -28,7 +28,7 @@ case $chosen in
 		systemctl reboot
         ;;
     $lock)
-		lock-screen
+        lock-screen
         ;;
     $suspend)
 		systemctl suspend

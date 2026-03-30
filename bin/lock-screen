@@ -1,49 +1,25 @@
 #!/bin/bash
 
+# Configuration
+ICON="$HOME/.config/i3/lock.jpg"
+IMG_SCREEN="/tmp/screen.png"
+IMG_FINAL="/tmp/final.png"
 
-IMG="TEMP1.jpg"
-IMG2="TEMP2.png" # i3lock only takes .png images
+# sleep so power menu has time to close
+sleep .35
 
-PARAMS=""
-DISPLAY_RE="([0-9]+)x([0-9]+)\\+([0-9]+)\\+([0-9]+)"
-IMAGE_RE="([0-9]+)x([0-9]+)"
+flameshot full -p "$IMG_SCREEN"
 
-flameshot full -p $IMG
+# 2. FFmpeg: Reduced blur and Center Overlay
+# Changed boxblur from 15:5 to 5:1 for a subtle effect
+ffmpeg -y -i "$IMG_SCREEN" -i "$ICON" -filter_complex \
+"[0:v]boxblur=5:1[bg]; \
+ [bg][1:v]overlay=(W-w)/2:(H-h)/2" \
+-vframes 1 "$IMG_FINAL" -loglevel error
 
-LOCK="$HOME/.config/i3/lock.jpg"
+# 3. Lock the screen 
+# -u (or --no-unlock-indicator) hides the flashing circle
+i3lock -u -i "$IMG_FINAL"
 
-LOCK_IMAGE_INFO=`identify $LOCK`
-[[ $LOCK_IMAGE_INFO =~ $IMAGE_RE ]]
-
-IMAGE_WIDTH=${BASH_REMATCH[1]}
-IMAGE_HEIGHT=${BASH_REMATCH[2]}
-
-# getting center coordinates of all outputs to place lock image
-# from: https://github.com/guimeira/i3lock-fancy-multimonitor 
-
-while read LINE
-do
-
-  if [[ $LINE =~ $DISPLAY_RE ]]; then
-
-    WIDTH=${BASH_REMATCH[1]}
-    HEIGHT=${BASH_REMATCH[2]}
-
-    X=${BASH_REMATCH[3]}
-    Y=${BASH_REMATCH[4]}
-
-    POS_X=$(($X+$WIDTH/2-$IMAGE_WIDTH/2))
-    POS_Y=$(($Y+$HEIGHT/2-$IMAGE_HEIGHT/2))
-
-    PARAMS="$PARAMS '$LOCK' '-geometry' '+$POS_X+$POS_Y' '-composite'"
-  fi
-
-done <<<"`xrandr`"
-
-PARAMS="'$IMG' '-scale' '10%' '-scale' '1000%' $PARAMS '$IMG2'"
-eval convert $PARAMS
-
-i3lock -u -i $IMG2
-
-rm $IMG
-rm $IMG2
+# 4. Cleanup
+rm "$IMG_SCREEN" "$IMG_FINAL"

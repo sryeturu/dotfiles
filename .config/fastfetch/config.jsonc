@@ -1,0 +1,90 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    // ── Logo: Arch logo in your exact terminal pinks ──
+    "logo": {
+        "source": "arch",
+        "color": {
+            "1": "38;2;218;87;181",    // #da57b5 — your accent pink
+            "2": "38;2;183;0;157"      // #b7009d — your bright magenta
+        },
+        "padding": {
+            "top": 1,
+            "right": 2
+        }
+    },
+
+    // ── Display ──
+    "display": {
+        "separator": " ",
+        "color": {
+            "keys": "38;2;218;87;181",      // #da57b5 — pink keys to match prompt
+            "title": "38;2;227;202;233",     // #e3cae9 — lavender like your foreground
+            "separator": "38;2;100;50;120"   // muted purple for the colon
+        }
+    },
+
+    // ── Modules ──
+    "modules": [
+        {
+            "type": "title",
+            "color": {
+                "user": "38;2;218;87;181",    // #da57b5 pink username
+                "host": "38;2;183;0;157"      // #b7009d magenta hostname
+            }
+        },
+        {
+            "type": "separator",
+            "string": "────────────"
+        },
+        "os",
+        "host",
+        "kernel",
+        "uptime",
+        "packages",
+        "shell",
+        {
+            "type": "display",
+            "compactType": "original"
+        },
+        "wm",
+        "theme",
+        "icons",
+        "font",
+        "cursor",
+        "terminal",
+        "terminalfont",
+        {
+            "type": "cpu",
+            "showPeCoreCount": true
+        },
+        "gpu",
+        {
+            "type": "memory",
+            "format": "{used} / {total} ({percentage})"
+        },
+        {
+            "type": "swap",
+            "format": "{used} / {total} ({percentage})"
+        },
+        {
+            "type": "disk",
+            "folders": "/"
+        },
+        {
+            "type": "localip",
+            "showIpv4": true,
+            "showIpv6": false
+        },
+        "battery",
+        "locale",
+        "break",
+        {
+            "type": "colors",
+            "paddingLeft": 8,
+            "block": {
+                "width": 3
+            }
+        }
+    ]
+}

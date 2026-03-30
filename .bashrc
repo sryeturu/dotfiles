@@ -93,3 +93,4 @@ fi
 # --------------------------------------------------
 [[ -f /etc/profile.d/google-cloud-cli.sh ]] &&
     source /etc/profile.d/google-cloud-cli.sh
+export PATH="$HOME/.local/bin:$PATH"
