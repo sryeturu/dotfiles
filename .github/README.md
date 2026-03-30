@@ -1,7 +1,7 @@
 
-![desktop](.github/screenshots/desktop.png)
+![desktop](screenshots/desktop.png)
   
-![fastfetch](.github/screenshots/fastfetch.png)
+![fastfetch](screenshots/fastfetch.png)
   
-![rofi](.github/screenshots/rofi.png)
+![rofi](screenshots/rofi.png)
  
